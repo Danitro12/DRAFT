@@ -32,7 +32,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
     Alert.alert(
       'Correo enviado',
       'Si el correo existe en nuestro sistema, recibirás instrucciones para restablecer tu contraseña.',
-      [{ text: 'Volver al Login', onPress: () => navigation.navigate('Login') }]
+      [{ text: 'Volver al Login', onPress: () => navigation.navigate('Login', { direction: 'fromLeft' }) }]
     );
   };
 
@@ -72,7 +72,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
 
             <CustomButton 
               title="VOLVER AL LOGIN" 
-              onPress={() => navigation.navigate('Login')} 
+              onPress={() => navigation.navigate('Login', { direction: 'fromLeft' })} 
               type="secondary"
             />
           </View>

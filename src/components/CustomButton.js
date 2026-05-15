@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { theme } from '../theme';
-
+import NeonText from './NeonText';
 const CustomButton = ({ title, onPress, type = 'primary', style }) => {
   const isPrimary = type === 'primary';
 
@@ -15,14 +15,12 @@ const CustomButton = ({ title, onPress, type = 'primary', style }) => {
       onPress={onPress}
       activeOpacity={0.8}
     >
-      <Text
-        style={[
-          styles.text,
-          isPrimary ? styles.primaryText : styles.secondaryText,
-        ]}
+      <NeonText
+        color={theme.colors.purple}
+        style={styles.text}
       >
         {title}
-      </Text>
+      </NeonText>
     </TouchableOpacity>
   );
 };
@@ -30,14 +28,22 @@ const CustomButton = ({ title, onPress, type = 'primary', style }) => {
 const styles = StyleSheet.create({
   button: {
     height: 56,
-    borderRadius: 8,
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
     marginVertical: theme.spacing.s,
+    borderWidth: 0.2,
+    borderColor: theme.colors.purple,
   },
   primaryButton: {
-    backgroundColor: theme.colors.primary,
+    // Efecto de Brillo Neón
+    backgroundColor: theme.colors.background,
+    shadowColor: theme.colors.purple,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.6,
+    shadowRadius: 5,
+    elevation: 8, // Sombra para Android
   },
   secondaryButton: {
     backgroundColor: 'transparent',

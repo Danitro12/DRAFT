@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     marginBottom: theme.spacing.xs,
   },
   inputContainer: {
-    backgroundColor: theme.colors.surface,
-    borderRadius: 8,
+    backgroundColor: theme.colors.background,
+    borderRadius: 25,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.davincci.purple,
     height: 56,
     justifyContent: 'center',
     paddingHorizontal: theme.spacing.m,
@@ -44,7 +44,10 @@ const styles = StyleSheet.create({
   input: {
     ...theme.typography.body,
     color: theme.colors.text,
-    height: '100%',
+    height: 56,
+    includeFontPadding: false,
+    textAlignVertical: 'center',
+    paddingVertical: 0,
   },
 });
 

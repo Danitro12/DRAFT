@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 // Screens
@@ -13,13 +13,38 @@ const Stack = createStackNavigator();
 const AuthNavigator = () => {
   return (
     <Stack.Navigator
+      initialRouteName="Login"
       screenOptions={{
         headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     >
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+      {/* 1. IZQUIERDA */}
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPasswordScreen}
+        options={{
+          gestureDirection: 'horizontal-inverted',
+        }}
+      />
+
+      {/* 2. CENTRO */}
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={({ route }) => ({
+          gestureDirection: route.params?.direction === 'fromRight' ? 'horizontal-inverted' : 'horizontal',
+        })}
+      />
+
+      {/* 3. DERECHA */}
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{
+          gestureDirection: 'horizontal',
+        }}
+      />
     </Stack.Navigator>
   );
 };

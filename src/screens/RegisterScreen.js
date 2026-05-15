@@ -5,6 +5,8 @@ import { theme } from '../theme';
 import BrandLogo from '../components/BrandLogo';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
+import NeonText from '../components/NeonText';
+import NeonTitle from '../components/NeonTitle';
 
 const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -32,7 +34,7 @@ const RegisterScreen = ({ navigation }) => {
     // Mock registration logic
     console.log('Registering with:', name, email);
     Alert.alert('Registro exitoso', 'Se ha registrado correctamente.', [
-      { text: 'OK', onPress: () => navigation.navigate('Login') }
+      { text: 'OK', onPress: () => navigation.navigate('Login', { direction: 'fromRight' }) }
     ]);
   };
 
@@ -48,9 +50,10 @@ const RegisterScreen = ({ navigation }) => {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
+
           <View style={styles.header}>
             <BrandLogo style={styles.logo} size={80} />
-            <Text style={styles.title}>Crear Cuenta</Text>
+            <NeonTitle text="Crear cuenta" fontSize={25} style={{ marginBottom: theme.spacing.s }} />
             <Text style={styles.subtitle}>
               Únete a la comunidad DRYFT y comienza tu viaje hoy mismo.
             </Text>
@@ -79,17 +82,17 @@ const RegisterScreen = ({ navigation }) => {
               onChangeText={setPassword}
             />
 
-            <CustomButton 
-              title="REGISTRARSE" 
-              onPress={handleRegister} 
+            <CustomButton
+              title="REGISTRARSE"
+              onPress={handleRegister}
               style={{ marginTop: theme.spacing.s }}
             />
           </View>
 
           <View style={styles.footer}>
             <Text style={styles.footerText}>¿Ya tienes cuenta? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-              <Text style={styles.linkText}>Inicia sesión</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login', { direction: 'fromRight' })}>
+              <NeonText>Inicia sesión</NeonText>
             </TouchableOpacity>
           </View>
         </ScrollView>
