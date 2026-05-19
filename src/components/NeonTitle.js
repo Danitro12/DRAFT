@@ -18,15 +18,16 @@ const NeonTitle = ({
   coreColor = theme.colors.white, 
   glowColor = theme.colors.purple, 
   fontSize = 25,
+  width = "100%",
   style 
 }) => {
   return (
     <View style={[styles.container, style]}>
-      <Svg height={fontSize * 2.5} width="100%">
+      <Svg height={fontSize * 2.5} width={width}>
         <Defs>
           {/* Filtro dinámico de neón */}
           <Filter id="neonGlowTitle" x="-50%" y="-50%" width="200%" height="200%">
-            <FeGaussianBlur stdDeviation="2.5" result="blur" />
+            <FeGaussianBlur stdDeviation={fontSize * 0.1} result="blur" />
             <FeMerge>
               <FeMergeNode in="blur" />
               <FeMergeNode in="blur" />

@@ -63,7 +63,7 @@ const LoginScreen = ({ navigation }) => {
               <Image
                 source={require('../../assets/mapa.png')}
                 style={styles.mapImage}
-                blurRadius={Platform.OS === 'ios' ? 0 : 1.5}
+                blurRadius={Platform.OS === 'ios' ? 0 : 0}
               />
               <Svg height="100%" width="100%" style={styles.gradient}>
                 <Defs>
@@ -71,8 +71,8 @@ const LoginScreen = ({ navigation }) => {
                     id="grad"
                     cx="50%"
                     cy="50%"
-                    rx="50%"
-                    ry="50%"
+                    rx="80%"
+                    ry="80%"
                     fx="50%"
                     fy="50%"
                     gradientUnits="userSpaceOnUse"
@@ -84,8 +84,8 @@ const LoginScreen = ({ navigation }) => {
                 <Rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />
               </Svg>
             </View>
-            <NeonTitle 
-              text="BIENVENIDO A DRAFT" 
+            <NeonTitle
+              text="BIENVENIDO A DRAFT"
               style={{ marginBottom: theme.spacing.s }}
             />
             <Text style={styles.subtitle}>
@@ -126,7 +126,7 @@ const LoginScreen = ({ navigation }) => {
           <View style={styles.footer}>
             <Text style={styles.footerText}>¿No tienes cuenta? </Text>
             <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-              <NeonText >Crear</NeonText>
+              <NeonText >Registrate</NeonText>
             </TouchableOpacity>
           </View>
         </ScrollView>
